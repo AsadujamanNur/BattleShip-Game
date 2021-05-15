@@ -1,8 +1,5 @@
 # We-tried
--------------------------------------Task-1------------------------------------------------
-*Amjad->introduction*
-*Nur-Overall Description(Use case scenarios)*
-*Johnson-> Specific requirements(interface requirement,functional requirement,non-functional requirements)*
 
 
-                              ************Deadline is by Monday 17may 2021**************
+                              ************Deadline for Task-1 is by Monday 17may 2021**************
+once you are done with your task please upload it here! and update the Task list
