@@ -1,0 +1,55 @@
+#include<stdio.h>
+
+void Start()
+{
+  
+printf("“Oorah!” Get ready for the war!\n");
+            printf("1. You have to destroy your opponent's war ships before he destroys yours.\n");
+            printf("2. The battlefield is of 10x10 grid size in which you place your ships\n");
+            printf("3. You can place your ships by entering its orientation, i.e horizontal or vertical. For horizontal orientation, type 'h' in the orientation option and type 'v' for vertical\n");
+            printf("4. and its x y coordinates(both separated by a space) where x is the row number and y is the column number\n");
+            printf("4. You have a fleet of 4 battle ships: Aircraft Carrier (5 units long), Battleship (4 units long), Destroyer (3 units long) and Corvette (2 units long)\n");
+            printf("5. After placing your ships, you can attack the enemy area. To attack a area, enter its x y coordinate (separated by a space)\n");
+            printf("6. Attack hit to the enemy ship is denoted by a 'H' and you get an extra turn\n");
+            printf("7. Attack miss is denoted by a '*' and your turn ends\n");
+            
+
+}
+void SelectLevel(int a){
+
+ printf("Selected difficulty is \n");
+    if(a==1)
+    printf("low \n");
+    else if (a==2)
+    printf("medium \n");
+    else
+    printf("Invalid value");
+}
+void EnterName_1()
+{
+printf ("\nPlease enter your name:");
+    char name1 [10];
+    scanf("%s", name1);
+    printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!.Please wait for the second oppnent to enter the name also.", name1);
+}
+
+void EnterName_2()
+{
+printf ("\nPlease enter your name:");
+    char name2 [10];
+    scanf("%s", name2);
+    printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name2);
+}
+
+
+
+
+
+void main()
+{
+    Start();
+    SelectLevel(1);
+    EnterName_1();
+    EnterName_2();
+    
+}
