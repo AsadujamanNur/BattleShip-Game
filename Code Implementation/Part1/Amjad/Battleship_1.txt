@@ -1,0 +1,134 @@
+#include <stdio.h>
+void starting();
+void enterName1();
+void enterName2();
+void selectMode();
+void selectDiff();
+
+
+int main()
+{
+    starting();
+    enterName1();
+    selectMode();
+
+    return 0;
+}
+
+
+void starting()
+
+{
+        printf ("WE WELCOME YOU TO OUR\n\n");
+        printf ("XXXXXX   XXXX  XXXXXX XXXXXX XX     XXXXXX  XXXXX  XX  XX XX XXXXXX\n");
+	printf ("XX  XX  XX  XX   XX     XX   XX     XX      XX     XX  XX XX XX  XX\n");
+	printf ("XXXXXX  XX  XX   XX     XX   XX     XXXXXX  XXXXX  XXXXXX XX XXXXXX\n");
+	printf ("XX  XX  XXXXXX   XX     XX   XX     XX         XX  XX  XX XX XX\n");
+	printf ("XXXXXX  XX  XX   XX     XX   XXXXXX XXXXXX  XXXXX  XX  XX XX XX\n");
+	printf ("\n");
+	printf ("XXXXXX   XXXX    XXXXXXXXXXXX     XXXXXX   XX\n");
+	printf ("XX      XX  XX   XX   XX   XX     XX       XX\n");
+	printf ("XX  XX  XX  XX   XX   XX   XX     XXXXXX   XX\n");
+	printf ("XX   X  XXXXXX   XX   XX   XX     XX\n");
+	printf ("XXXXXX  XX  XX   XX   XX   XX     XXXXXX   XX\n");
+
+
+	printf ("\n\n");
+	printf ("RULES OF THE GAME:\n");
+	printf ("1. This is a two player game. However, you can choose either to play it as a single player or as a multiple player\n");
+        printf ("If the you choose to play as a single player, you will be playing against the computer itself \n");
+        printf ("But if you choose to play as a multiple player, you will be playing against another player denoted as Player 2 \n");
+	printf ("2. The battlefield is a 10x10 grid where you place your ships\n");
+        printf ("The horizontal boxes are identified with numbers 1-10 and the vertical boxes are marked with letters a – j\n");
+        printf ("3. You will be prompted to select the formation and position of your ships as you desired\n");
+        printf ("4. You can place your ships by entering its orientation, which are either horizontal or vertical\n");
+	printf ("For horizontal orientation, type 'h' in the orientation option and type 'v' for vertical\n");
+        printf ("5. There are 4 types of formations and a total of 10 ships to be placed by using  a coordinate system (x y)\n");
+        printf ("You need to place  4 ships over 2 boxes, 3 ships over 3 boxes, 2 ships over 4 boxes, 1 ship over 5 boxes\n");
+        printf ("6. And its x y coordinates(both separated by a space) where x is the row number and y is the column number\n");
+        printf ("7. After placing your ships, the game begins as each player tries to guess the location of the enemy's ships and attack them\n");
+        printf ("To attack a specific area, enter its x y coordinate(separated by a space)\n");
+        printf ("8. If your attack hits the enemy ship, it will be denoted by an 'H'. You also will get an extra turn. Same rules will be applied to your opponent\n");
+        printf ("9. If your attack misses, it will be denoted by a '*' and your turn ends\n");
+        printf ("10. First player to guess the location of all ships wins\n\n");
+    
+
+
+}
+
+void enterName1()
+{
+    printf ("\nPlease enter your name:");
+    char name1 [100];
+    scanf("%s", name1);
+    printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name1);
+}
+
+void selectMode()
+{
+   int x;
+   printf("\n\nDo you want to play as a single player or as multiple players?");
+   printf("\nEnter the number \"1\" if you want to play as a single player and \"2\" as a multiple player");
+   printf("\nPlease enter either \"1\" or \"2\" only!");
+   printf("\nPlease enter your choice:");
+
+   scanf("%d", &x);
+
+   switch (x)
+		{
+    			case 1:
+      			         selectDiff();
+      			break;
+
+	                case 2:
+	                         enterName2();
+
+                        break;
+
+
+    			default:
+    			        printf("\nThe number you enter in invalid");
+    			        printf("\nPlease enter the right input");
+    			        selectMode();
+
+		}
+
+}
+
+ void enterName2()
+{
+    printf ("\nPlayer 2, please enter your name:");
+    char name1 [100];
+    scanf("%s", name1);
+    printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name1);
+}
+
+void selectDiff()
+{
+    int y;
+
+     printf("\nPlease choose your desired difficulty");
+     printf("Enter the number \"1\" if you want to choose EASY mode and \"2\" for HARD mode");
+     printf("Please enter either \"1\" or \"2\" only");
+     printf("Please enter your desired difficulty level:");
+     scanf("%d", &y);
+
+     switch (y)
+		{
+    			case 1:
+      			         printf("You're gonna play it easy");
+      			break;
+
+	                case 2:
+	                          printf("You're gonna play it hard");
+
+                        break;
+
+
+    			default:
+    			        printf("\nThe number you enter in invalid");
+    			        printf("\nPlease enter the right input");
+    			        selectDiff();
+
+		}
+}
