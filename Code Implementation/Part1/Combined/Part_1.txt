@@ -1,0 +1,207 @@
+#include <stdio.h>
+void starting();
+void rulebook();
+void playerTwo();
+void selectMode();
+void selectDiff();
+
+
+int main()
+{
+starting();
+//enterName1();//
+selectMode();
+
+return 0;
+}
+
+
+void starting()
+
+{
+    int start_button;
+    char playerOne[120];
+
+
+   puts("****************************************************************************");
+   puts("*                        Welcome to The warzone                            *");
+   puts("*                              Ready your                                  *");
+   puts("*--------------------------------------------------------------------------*");
+   puts("*                                                                          *");
+   puts("*                                                                          *");
+   puts("*                                                                          *");
+   puts("*                                                                          *");
+   puts("*         XXXXXX XXXX XXXXXX XXXXXX XX XXXXXX XXXXX XX XX XX XXXXXX        *");
+   puts("*         XX XX XX XX XX XX XX XX XX XX XX XX XX XX                        *");
+   puts("*         XXXXXX XX XX XX XX XX XXXXXX XXXXX XXXXXX XX XXXXXX              *");
+   puts("*         XX XX XXXXXX XX XX XX XX XX XX XX XX XX                          *");
+   puts("*         XXXXXX XX XX XX XX XXXXXX XXXXXX XXXXX XX XX XX XX               *");
+   puts("*                                                                          *");
+   puts("*         XXXXXX XXXX XXXXXXXXXXXX XXXXXX XX                               *");
+   puts("*         XX XX XX XX XX XX XX XX                                          *");
+   puts("*         XX XX XX XX XX XX XX XXXXXX XX                                   *");
+   puts("*         XX X XXXXXX XX XX XX XX                                          *");
+   puts("*         XXXXXX XX XX XX XX XX XXXXXX XX                                  *");
+   puts("*                                                                          *");
+   puts("*                                                                          *");
+   puts("*            _______________________________________________               *");
+   puts("*           |                                               |              *");
+   puts("*           |                                               |              *");
+   puts("*           |                                               |              *");
+   puts("*           |            'Press '1' to START'               |              *");
+   puts("*           |         'Press '2' to See the Rules           |              *");
+   puts("*           |                                               |              *");
+   puts("*           |_______________________________________________|              *");
+   puts("*                                                                          *");
+   puts("*                                                                          *");
+   puts("****************************************************************************");
+
+    scanf("%d",&start_button);
+
+
+                 //Making Decision based on Users input//
+   if(start_button==1)
+   {
+       printf("Please Choose a Name for Player one Here:\n");
+       scanf("%s",&playerOne);
+       printf("Hallo '%s' Please choose your desired PlayingMode\n",playerOne);
+       //printf("%s",start_button_mode_reply);
+   }
+   else if(start_button==2)
+   {
+       rulebook();
+       puts("");
+       puts("");
+
+   }
+   else
+   {
+       printf("you pushed the wrong button please follow the instructions\n");
+       starting();
+
+   }
+
+}
+
+
+void rulebook()
+{
+
+    int back_button;
+
+
+   puts(" _________________________________________________________________________________________________________________________________________________________");
+   puts("|                                                                                                                                                          |");
+   puts("|                                                           *************************                                                                      |");
+   puts("|                                                           *      Rules Book       *                                                                      |");
+   puts("|                                                           *************************                                                                      |");
+   puts("|        1. This is a two player game. However, you can choose either to play it as a single player or as a multiple player                                |");
+   puts("|           If the you choose to play as a single player, you will be playing against the computer itself                                                  |");
+   puts("|           But if you choose to play as a multiple player, you will be playing against another player denoted as Player 2.                                |");
+   puts("|        2. The battlefield is a 10x10 grid where you place your ships                                                                                     |");
+   puts("|           The horizontal boxes are identified with numbers 1-10 and the vertical boxes are marked with letters a – j.                                    |");
+   puts("|        3. You will be prompted to select the formation and position of your ships as you desired.                                                        |");
+   puts("|        4. You can place your ships by entering its orientation, which are either horizontal or vertical                                                  |");
+   puts("|           For horizontal orientation, type 'h' in the orientation option and type 'v' for vertical.                                                      |");
+   puts("|        5. There are 4 types of formations and a total of 10 ships to be placed by using  a coordinate system (x y)                                       |");
+   puts("|           You need to place  4 ships over 2 boxes, 3 ships over 3 boxes, 2 ships over 4 boxes, 1 ship over 5 boxes.                                      |");
+   puts("|        6. And its x y coordinates(both separated by a space) where x is the row number and y is the column number                                        |");
+   puts("|        7. After placing your ships, the game begins as each player tries to guess the location of the enemy's ships and attack them                      |");
+   puts("|           To attack a specific area, enter its x y coordinate(separated by a space).                                                                     |");
+   puts("|        8. If your attack hits the enemy ship, it will be denoted by an 'H'. You also will get an extra turn. Same rules will be applied to your opponent |");
+   puts("|        9. If your attack misses, it will be denoted by a '*' and your turn ends.                                                                         |");
+   puts("|       10. First player to guess the location of all ships wins.                                                                                          |");
+   puts("|                                                                                                                                                          |");
+   puts("|__________________________________________________________________________________________________________________________________________________________|");
+
+
+
+   puts("\n\nPlease press '1' to continue");
+   scanf("%d",&back_button);
+   if(back_button==1)
+   {
+   starting();
+   }
+   else
+   {
+       puts("you suck! loser press the right button");
+   }
+
+
+}
+
+void selectMode()
+{
+int x;
+
+char start_button_mode_reply[]=    " ______________________________________________________\n"
+                                   "|           -------------------------------            |\n"
+                                   "|          |                               |           |\n"
+                                   "|          |          Select Mode          |           |\n"
+                                   "|          |                               |           |\n"
+                                   "|        ---------------------------------------       |\n"
+                                   "|       | Press '1' to Select Single PlayerMode |      |\n"
+                                   "|       | Press '2' to Select MultiPlayerMode   |      |\n"
+                                   "|        ---------------------------------------       |\n"
+                                   "|______________________________________________________|\n";
+printf("%s",start_button_mode_reply);
+scanf("%d", &x);
+
+switch (x)
+{
+case 1:
+selectDiff();
+break;
+
+case 2:
+playerTwo();
+
+break;
+
+
+default:
+printf("\nThe number you enter in invalid");
+printf("\nPlease enter the right input");
+selectMode();
+
+}
+
+}
+
+void playerTwo()
+{
+printf ("\nPlayer 2, please enter your name:");
+char name2 [100];
+scanf("%s", name2);
+printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name2);
+}
+
+void selectDiff()
+{
+int y;
+
+printf("\nPlease choose your desired difficulty");
+printf("Enter the number \"1\" if you want to choose EASY mode and \"2\" for HARD mode");
+printf("Please enter either \"1\" or \"2\" only");
+printf("Please enter your desired difficulty level:");
+scanf("%d", &y);
+
+switch (y)
+{
+case 1:
+printf("You're gonna play it easy");
+break;
+
+case 2:
+printf("You're gonna play it hard");
+
+break;
+
+
+default:
+printf("\nThe number you enter in invalid");
+printf("\nPlease enter the right input");
+selectDiff();
+
+}
+}
