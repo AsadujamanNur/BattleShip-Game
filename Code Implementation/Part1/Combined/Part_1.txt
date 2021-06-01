@@ -49,7 +49,7 @@ void starting()
    puts("*           |                                               |                 *");
    puts("*           |                                               |                 *");
    puts("*           |            'Press '1' to START'               |                 *");
-   puts("*           |         'Press '2' to See the Rules           |                 *");
+   puts("*           |         'Press '2' to See the Rules'          |                 *");
    puts("*           |                                               |                 *");
    puts("*           |_______________________________________________|                 *");
    puts("*                                                                             *");
@@ -68,10 +68,17 @@ void starting()
        printf("*             Please Choose a Name for Player one Here:                    *\n");
        printf("****************************************************************************\n");
        scanf("%s",&playerOne);
-       printf("          _______________________________________________________\n");
-       printf("         |                                                       |\n");
-       printf("         |   Hallo '%s' Please choose your desired PlayingMode  |\n",playerOne);
-       printf("         |                                                       |");
+
+         puts(" ____________________________________________________________________________");
+         puts("|                                                                            |");
+       printf("|                           Hallo '%s'                                      |\n",playerOne);
+         puts("|                                                                            |");
+         puts("|               'Please choose your desired Playing Mode'                    |");
+         puts("|                                                                            |");
+         puts("|              'Against the Computer OR Against your Mate?'                  |");
+         puts("|                                                                            |");
+         puts("|____________________________________________________________________________|");
+
 
    }
    else if(start_button==2)
