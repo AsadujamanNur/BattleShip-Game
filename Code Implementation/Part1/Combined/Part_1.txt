@@ -49,7 +49,7 @@ void starting()
    puts("*           |                                               |                 *");
    puts("*           |                                               |                 *");
    puts("*           |            'Press '1' to START'               |                 *");
-   puts("*           |         'Press '2' to See the Rules'          |                 *");
+   puts("*           |         'Press '2' to See the Rules           |                 *");
    puts("*           |                                               |                 *");
    puts("*           |_______________________________________________|                 *");
    puts("*                                                                             *");
@@ -68,7 +68,6 @@ void starting()
        printf("*             Please Choose a Name for Player one Here:                    *\n");
        printf("****************************************************************************\n");
        scanf("%s",&playerOne);
-
          puts(" ____________________________________________________________________________");
          puts("|                                                                            |");
        printf("|                           Hallo '%s'                                      |\n",playerOne);
@@ -78,8 +77,6 @@ void starting()
          puts("|              'Against the Computer OR Against your Mate?'                  |");
          puts("|                                                                            |");
          puts("|____________________________________________________________________________|");
-
-
    }
    else if(start_button==2)
    {
@@ -188,10 +185,21 @@ void selectMode()
 void playerTwo()
 {
     char name2 [100];
-    printf ("\nPlayer 2, please enter your name:");
+    puts(" ");
+       puts(" ");
+       printf("****************************************************************************\n");
+       printf("*             Please Choose a Name for Player two Here:                    *\n");
+       printf("****************************************************************************\n");
 
   scanf("%s", name2);
-  printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name2);
+         puts(" ____________________________________________________________________________");
+         puts("|                                                                            |");
+         puts("|                                                                            |");
+       printf("|                           Hallo '%s'                                      |\n",name2);
+         puts("|                                                                            |");
+         puts("|               'To Defeat or to be defeated is your choice                  |");
+         puts("|                                                                            |");
+         puts("|____________________________________________________________________________|");
 }
 
 void selectDiff()
@@ -219,11 +227,36 @@ void selectDiff()
 switch (y)
 {
 case 1:
-printf("You're gonna play it easy");
+   puts("*******************************************************************************");
+   puts("*                                                                             *");
+   puts("*            _______________________________________________                  *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |        ('You're gonna play it easy')          |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |_______________________________________________|                 *");
+   puts("*                                                                             *");
+   puts("*                                                                             *");
+   puts("*******************************************************************************");
+
 break;
 
 case 2:
-printf("You're gonna play it hard");
+   puts("*******************************************************************************");
+   puts("*                                                                             *");
+   puts("*            _______________________________________________                  *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |         ('You're gonna play it hard')         |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |                                               |                 *");
+   puts("*           |_______________________________________________|                 *");
+   puts("*                                                                             *");
+   puts("*                                                                             *");
+   puts("*******************************************************************************");
 
 break;
 
