@@ -8,11 +8,11 @@ void selectDiff();
 
 int main()
 {
-starting();
-//enterName1();//
-selectMode();
+  starting();
 
-return 0;
+  selectMode();
+
+  return 0;
 }
 
 
@@ -62,24 +62,17 @@ void starting()
                  //Making Decision based on Users input//
    if(start_button==1)
    {
-       puts("Please Choose a Name for Player one Here:");
+       puts(" ");
+       puts(" ");
+       printf("****************************************************************************\n");
+       printf("*             Please Choose a Name for Player one Here:                    *\n");
+       printf("****************************************************************************\n");
        scanf("%s",&playerOne);
-       
-       
-         puts("* ____________________________________________________________________________");
-         puts("*|                                                                            |");
-         puts("*|                            Hallo '%s'                                      |",playerOne);
-         puts("*|                                                                            |");
-         puts("*|               'Please choose your desired Playing Mode'                    |");
-         puts("*|                                                                            |");
-         puts("*|              'Against the Computer OR Against your Mate?'                  |");
-         puts("*|                                                                            |");
-         puts("*|____________________________________________________________________________|");
+       printf("          _______________________________________________________\n");
+       printf("         |                                                       |\n");
+       printf("         |   Hallo '%s' Please choose your desired PlayingMode  |\n",playerOne);
+       printf("         |                                                       |");
 
-       selectMode();
-
-
-//printf("%s",start_button_mode_reply);
    }
    else if(start_button==2)
    {
@@ -104,7 +97,7 @@ void rulebook()
     int back_button;
 
 
-   puts(" _________________________________________________________________________________________________________________________________________________________");
+   puts(" __________________________________________________________________________________________________________________________________________________________");
    puts("|                                                                                                                                                          |");
    puts("|                                                           *************************                                                                      |");
    puts("|                                                           *      Rules Book       *                                                                      |");
@@ -129,7 +122,6 @@ void rulebook()
    puts("|__________________________________________________________________________________________________________________________________________________________|");
 
 
-
    puts("\n\nPlease press '1' to continue");
    scanf("%d",&back_button);
    if(back_button==1)
@@ -146,37 +138,41 @@ void rulebook()
 
 void selectMode()
 {
-int x;
+  int x;
 
-char start_button_mode_reply[]=    " ______________________________________________________\n"
-                                   "|           -------------------------------            |\n"
-                                   "|          |                               |           |\n"
-                                   "|          |          Select Mode          |           |\n"
-                                   "|          |                               |           |\n"
-                                   "|        ---------------------------------------       |\n"
-                                   "|       | Press '1' to Select Single PlayerMode |      |\n"
-                                   "|       | Press '2' to Select MultiPlayerMode   |      |\n"
-                                   "|        ---------------------------------------       |\n"
-                                   "|______________________________________________________|\n";
-printf("%s",start_button_mode_reply);
-scanf("%d", &x);
+  char start_button_mode_reply[]=  "\n****************************************************************************\n"
+                                   "*                                                                          *\n"
+                                   "*                     -------------------------------                      *\n"
+                                   "*                    |                               |                     *\n"
+                                   "*                    |          Select Mode          |                     *\n"
+                                   "*                    |                               |                     *\n"
+                                   "*                 ---------------------------------------                  *\n"
+                                   "*                | Press '1' to Select Single PlayerMode |                 *\n"
+                                   "*                | Press '2' to Select MultiPlayerMode   |                 *\n"
+                                   "*                 ---------------------------------------                  *\n"
+                                   "*                                                                          *\n"
+                                   "*                                                                          *\n"
+                                   "****************************************************************************\n";
 
-switch (x)
+  printf("%s",start_button_mode_reply);
+  scanf("%d", &x);
+
+  switch (x)
+
 {
-case 1:
-selectDiff();
-break;
+  case 1:
+      selectDiff();
+  break;
 
-case 2:
-playerTwo();
+  case 2:
+     playerTwo();
+  break;
 
-break;
 
-
-default:
-printf("\nThe number you enter in invalid");
-printf("\nPlease enter the right input");
-selectMode();
+  default:
+  printf("\nThe number you enter in invalid");
+  printf("\nPlease enter the right input");
+  selectMode();
 
 }
 
@@ -184,21 +180,34 @@ selectMode();
 
 void playerTwo()
 {
-printf ("\nPlayer 2, please enter your name:");
-char name2 [100];
-scanf("%s", name2);
-printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name2);
+    char name2 [100];
+    printf ("\nPlayer 2, please enter your name:");
+
+  scanf("%s", name2);
+  printf("Hello %s! Welcome to the Battleship game! To defeat or to be defeated? That is your decision to choose!", name2);
 }
 
 void selectDiff()
 {
-int y;
+    int y;
 
-printf("\nPlease choose your desired difficulty");
-printf("Enter the number \"1\" if you want to choose EASY mode and \"2\" for HARD mode");
-printf("Please enter either \"1\" or \"2\" only");
-printf("Please enter your desired difficulty level:");
-scanf("%d", &y);
+    puts("****************************************************************************");
+    puts("*                                    *                                     *");
+    puts("*    ____________________________    *     ____________________________    *");
+    puts("*   |                            |   *    |                            |   *");
+    puts("*   |                            |   *    |                            |   *");
+    puts("*   |            EASY            |   *    |            HARD            |   *");
+    puts("*   |                            |   *    |                            |   *");
+    puts("*   |____________________________|   *    |____________________________|   *");
+    puts("*   |                            |   *    |                            |   *");
+    puts("*   |         Press '1'          |   *    |         Press '2'          |   *");
+    puts("*   |____________________________|   *    |____________________________|   *");
+    puts("*                                    *                                     *");
+    puts("*                                    *                                     *");
+    puts("****************************************************************************");
+
+
+    scanf("%d", &y);
 
 switch (y)
 {
