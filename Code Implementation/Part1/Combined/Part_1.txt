@@ -62,10 +62,24 @@ void starting()
                  //Making Decision based on Users input//
    if(start_button==1)
    {
-       printf("Please Choose a Name for Player one Here:\n");
+       puts("Please Choose a Name for Player one Here:");
        scanf("%s",&playerOne);
-       printf("Hallo '%s' Please choose your desired PlayingMode\n",playerOne);
-       //printf("%s",start_button_mode_reply);
+       
+       
+         puts("* ____________________________________________________________________________");
+         puts("*|                                                                            |");
+         puts("*|                            Hallo '%s'                                      |",playerOne);
+         puts("*|                                                                            |");
+         puts("*|               'Please choose your desired Playing Mode'                    |");
+         puts("*|                                                                            |");
+         puts("*|              'Against the Computer OR Against your Mate?'                  |");
+         puts("*|                                                                            |");
+         puts("*|____________________________________________________________________________|");
+
+       selectMode();
+
+
+//printf("%s",start_button_mode_reply);
    }
    else if(start_button==2)
    {
