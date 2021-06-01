@@ -1,0 +1,27 @@
+PLAYING PHASE
+
+TIPS FOR THE GAME
+
+prints out "This is how the board of the game would look like"
+prints out "horizontal coordinates are labelled from 1-10 and vertical coordinates are labelled as a-j"
+
+1) Prints out the board with the boxes (10x10)-horizontal(1-10), vertical(a-j)
+
+**Maybe we need to show some examples or demo on this part (Placing the ship)**
+
+2) How to place the ship - i)The player can choose either to place it horizontal or vertical?
+                             (The program prompts the player to enter either 'h' for horizontal and 'v' for vertical)
+                          
+                           ii)Which ship they want to place? The ones within 2/3/4/5 boxes?
+                             (The program prompts the player to enter which ship)
+                             (The user need to place  4 ships over 2 boxes, 3 ships over 3 boxes, 2 ships over 4 boxes, 1 ship over 5 boxes)
+                         
+                          iii)Asking the coordinates that they want to place their ship in (x y) style
+                              (And its x y coordinates(both separated by a space) where x is the row number and y is the column number)  
+                               
+                               ?? Do we need to make the user to only prompts a single coordinate, and use if else thousand times??    
+
+
+
+
+                                                                    
