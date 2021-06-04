@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void showBoard(int board[][10])
+{
+
+    int line, column;
+
+        printf("\t1 \t2 \t3 \t4 \t5 \t6 \t7 \t8 \t9 \t10");
+        printf("\n");
+
+        for(line=0 ; line < 10 ; line++ ){
+            printf("%c",line+65);
+            for(column=0 ; column < 10 ; column++ ){
+                
+                    printf("\t~");
+               
+              
+
+            }
+            printf("\n");
+        }
+
+    }
+    
+    int main()
+    {
+        int board[10][10];
+        showBoard(board);
+    }
