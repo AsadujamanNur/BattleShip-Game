@@ -1,0 +1,109 @@
+
+
+void printIntro(int maxTries)
+{
+        printf("\n");
+        printf("----------------------------------------------------------\n");
+        printf("The computer program will randomly assign an aircraft car-\n");
+        printf("rier and a battleship, that are oriented either vertically\n");
+        printf("or horizontally, to the board. You will have %d chances to\n", maxTries);
+        printf("sink both the computer's aircraft carrier and battleship!!\n");
+        printf("You'll play on a %d x %d board, where the aircraft carrier\n", SIZE, SIZE);
+        printf("will have a length of 5 units and the battleship will have\n");
+        printf("a length of 4 units.                                      \n");
+        printf("----------------------------------------------------------\n\n");
+}
+
+
+ /* assign number of shots available based on difficulty level chosen */
+        if (!strcmp(level, "easy"))
+        {
+                maxTries = 30;
+        }
+        else if (!strcmp(level, "normal"))
+        {
+                maxTries = 25;
+        }
+        else /* strcmp(level, "hard")) */
+        {
+                maxTries = 20;
+        }
+
+ printIntro(maxTries);	/* call function to print introductory message, including number of shots */
+
+
+
+//how computer assign or placing ships 
+
+int assignShip(int **board, int shipType)
+{
+        int valid = 0;  /* use 0 for false (not assigned); otherwise 1 means assigned successfully */
+        int i;		/* index used in loop counter as row */
+  int j;		/* index used in loop counter as column */
+        int vertical;	/* randomly generated ship orientation */
+        int shipRowPos;	/* randomly generated row position of ship */
+        int shipColPos;	/* randomly generated column position of ship */
+
+        srand(time(NULL));
+
+        vertical   = rand() % 2;	/* randomly generated ship orientation: 1 = vertical, 0 = horizontal */
+
+        shipRowPos = rand() % 10;	/* randomly generated ship row position */ 
+        shipColPos = rand() % 10;	/* randomly generated ship column position */
+
+        if (vertical) /* vertical orientation */
+        {
+		    /* check to see if vertical ship can be placed on board at this location */
+                if ((shipRowPos + shipType) < SIZE)
+                {
+                        /* need check if ship already in this position first */
+                        for (i = shipRowPos; i < (shipRowPos + shipType); i++)
+                        {
+                                if (board[i][shipColPos] != 0)
+                                {
+                                        /* ship already here, return valid = 0 */
+                                        return valid;
+                                }
+                        }
+
+                        /* ship able to fit vertically on board */
+                        valid = 1;
+
+                        /* need assign ship's position on board */
+                        for (i = shipRowPos; i < (shipRowPos + shipType); i++)
+                        {
+                                board[i][shipColPos] = shipType;
+                        }
+                }
+        }
+        else /* horizontal orientation */
+        {
+		    /* check to see if horizontal ship can be placed on board at this location */
+                if ((shipColPos + shipType) < SIZE)
+                {
+                        /* need check if ship already in this position first */
+                        for (j = shipColPos; j < (shipColPos + shipType); j++)
+                        {
+                                if (board[shipRowPos][j] != 0)
+                                {
+                                        /* ship already here */
+                                        return valid;
+                                }
+                        }
+
+                        /* ship able to fit vertically on board */
+                        valid = 1;
+
+                        /* need assign ship's position on board */
+                        for (j = shipColPos; j < (shipColPos + shipType); j++)
+                        {
+                                board[shipRowPos][j] = shipType;
+                        }
+                }
+        }
+
+        return valid;
+}
+
+
+
