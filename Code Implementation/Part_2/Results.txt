@@ -1,0 +1,34 @@
+ shipcount=randgen(ships,n);
+
+   printf("\n\nNumber of ships to be sunk:%d",shipcount);
+   printf("\nNumber of misses allowed: %d\n\n",difficulty);
+
+   draw_gui(pseudo_gui,n);
+   result(pseudo_gui,n);
+
+   while(shipcount!=0 && x_count!=difficulty)
+   {
+
+   printf("\nEnter coordinates (x,y):");
+   scanf("%d,%d",&coords.x,&coords.y);
+   buff_clr();
+
+   system("cls");
+
+   battle(ships,pseudo_gui,n,coords,&shipcount,&x_count);
+   result(pseudo_gui,n);
+
+   printf("Number of ships to be sunk:%d",shipcount);
+   printf("\nNumber of misses(out of %d): %d\n\n",difficulty,x_count);
+
+   }
+   if(shipcount==0)
+   {
+       printf("\nWinner!\n\n");
+       getch();
+   }
+   else if(x_count==difficulty)
+   {
+       printf("\nYou Lose!\n\n");
+       getch();
+   }
