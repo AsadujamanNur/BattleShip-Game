@@ -167,38 +167,36 @@ int ship_number;
        printf("*                                                                          *\n");
        printf("*        PLEASE REMEMBER TO ONLY INSERT THE RIGHT NUMBERS OF SHIPS         *\n");
        printf("*                                                                          *\n");
-       printf("*        1. PLACE ONLY 4 SHIPS OVER 2 BOXES                                *\n");
-       printf("*        2. PLACE ONLY 3 SHIPS OVER 3 BOXES                                *\n");
-       printf("*        2. PLACE ONLY 2 SHIPS OVER 4 BOXES                                *\n");
-       printf("*        2. PLACE ONLY 1 SHIP OVER 1 BOX                                   *\n");
+       printf("*        -> PLACE ONLY 4 SHIPS OVER 2 BOXES <-                             *\n");
+       printf("*        -> PLACE ONLY 3 SHIPS OVER 3 BOXES <-                             *\n");
+       printf("*        -> PLACE ONLY 2 SHIPS OVER 4 BOXES <-                             *\n");
+       printf("*        -> PLACE ONLY 1 SHIP  OVER 5 BOXES <-                             *\n");
        printf("*                                                                          *\n");
        printf("****************************************************************************\n");
        puts("");
        puts("");
 
-    
-       
-       
-       
-       
+
+
+
+
+
     puts("****************************************************************************");
-    puts("*                                    *                                     *");
     puts("* __________________________________ * __________________________________  *");
-    puts("*                                    *                                     *");
-    puts("*         Ships with 2 boxes         *           Ships with 3 boxes        *");
-    puts("* __________________________________ * __________________________________  *");
-    puts("*                                    *                                     *");
-    puts("*          PLEASE ENTER '2'          *           PLEASE ENTER '3'          *");
-    puts("*                                    *                                     *");
+    puts("*|                                  |*|                                  | *");
+    puts("*|         Ships with 2 boxes       |*|           Ships with 3 boxes     | *");
+    puts("*|__________________________________|*|__________________________________| *");
+    puts("*|                                  |*|                                  | *");
+    puts("*|          PLEASE ENTER '2'        |*|           PLEASE ENTER '3'       | *");
+    puts("*|__________________________________|*|__________________________________| *");
     puts("****************************************************************************");
-    puts("*                                    *                                     *");
-    puts("* __________________________________ *  __________________________________ *");
-    puts("*                                    *                                     *");
-    puts("*         Ships with 4 boxes         *          Ships with 5 boxes         *");
-    puts("* __________________________________ *  __________________________________ *");
-    puts("*                                    *                                     *");
-    puts("*          PLEASE ENTER '4'          *           PLEASE ENTER '4'          *");
-    puts("*                                    *                                     *");
+    puts("* __________________________________ * __________________________________  *");
+    puts("*|                                  |*|                                  | *");
+    puts("*|        Ships with 4 boxes        |*|         Ships with 5 boxes       | *");
+    puts("*|__________________________________|*|__________________________________| *");
+    puts("*|                                  |*|                                  | *");
+    puts("*|          PLEASE ENTER '4'        |*|          PLEASE ENTER '5'        | *");
+    puts("*|__________________________________|*|__________________________________| *");
     puts("****************************************************************************");
 
 
@@ -238,6 +236,7 @@ int ship_number;
     else if (ship_number==5)
     {
         ship_with_five_box(board);
+
     }
     else
     {
@@ -287,7 +286,7 @@ int main()
 
 
     printMap(board);
-    for(int i=0;i<9;i++)
+    for(int i=0;i<1;i++)
     {
    ship_placement(board);
     printMap(board);
