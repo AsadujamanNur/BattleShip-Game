@@ -55,11 +55,33 @@ void getPosition(int* posx, int* posy)
         int correctCount = 0;
         printf("Enter position. ");
         scanf("%s", &userInput);
-        if(userInput[0] >= 'A' && userInput[0] <= 'J')
+        while (userInput > 11)
+        {
+
+
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!                                                                            !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!   Don't send your men into the abyss! Stay within the board (10 Spaces)    !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!                   PLEASE PROPERLY ENTER YOUR SHIP AGAIN                    !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!                                                                            !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+
+            scanf("%s", &userInput);
+        }
+        if (userInput[0] >= 'A' && userInput[0] <= 'J')
         {
             *posx = userInput[0] - 'A';
             correctCount++;
-        } else if (userInput[0] >= 'a' && userInput[0] <= 'j')
+        }
+        else if (userInput[0] >= 'a' && userInput[0] <= 'j')
         {
             *posx = userInput[0] - 'a';
             correctCount++;
@@ -69,12 +91,27 @@ void getPosition(int* posx, int* posy)
             *posy = userInput[1] - '0';
             correctCount++;
         }
-        if(correctCount == 2)
+        if (correctCount == 2)
         {
             isCorrect = 1;
-        } else
+        }
+        else
         {
-            printf("\nYou suck looser, choose the right option. ");
+
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!                                            !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!   you suck! loser press the right button   !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!                                            !!!!!!!!!!!!!!!!!");
+            puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+            puts(" ");
+
         }
 
     } while (!isCorrect);
@@ -259,7 +296,7 @@ int ship_number;
     }
 }
 
-int main()
+void preparation_phase()
 {
     char board[11][11];
     for (int i = 1; i < 11; i++)
@@ -286,9 +323,14 @@ int main()
 
 
     printMap(board);
-    for(int i=0;i<1;i++)
+    for(int i=0;i<4;i++)
     {
    ship_placement(board);
     printMap(board);
     }
+}
+
+int main()
+{
+    preparation_phase();
 }
