@@ -1,0 +1,953 @@
+#include <stdlib.h>
+
+#include <stdio.h>
+
+#include <time.h>
+
+#include <ctype.h>
+
+#include <memory.h>
+
+#define RED "\x1B[31m"  
+
+#define GRN "\x1B[32m"
+
+#define YEL "\x1B[33m"
+
+#define BLU "\x1B[34m"
+
+#define MAG "\x1B[35m"
+
+#define CYN "\x1B[36m"
+
+#define WHT "\x1B[37m"
+
+#define RESET "\x1B[0m"
+
+#define CLS system("cls")
+
+#define PAUSE system("pause")
+
+#define FLUSH while (getchar() != '\n')
+
+#define GAMES 10
+
+#define row 10  
+
+#define col 10
+
+struct ShipInfo
+
+{
+
+char name;
+
+int size;
+
+} Crusor, AirCarrier, Battleship, Submarine, Destroyer;
+
+void assignShipInfo();
+
+int menu();
+
+void resetGame(char[row][col], char[row][col], int *, int *);
+
+void setPieces1(char[row][col], char *);
+
+void setPieces2(char[row][col], struct ShipInfo *);
+
+void BOARD(char[row][col], int);
+
+void target(char[row][col], int *, int *, int);
+
+void BullsEye(int, int, char[row][col], char[row][col], int *, int *);
+
+void topTen(int[], int);
+
+void EXIT();
+
+//Function Caller
+
+int main() {
+
+int x = 0, y = 0, menuSelection = 0, topScores[GAMES] = { 0 }, movPlayed = 0, hits = 0;
+
+char coords[row][col] = { 0 }, ships[row][col] = { 0 }, run = 0;
+
+assignShipInfo();
+
+do {
+
+menuSelection = menu();
+
+switch (menuSelection) {
+
+case 1: //Starting a new game
+
+if (run == 0) {
+
+resetGame(ships, coords, &movPlayed, &hits);
+
+setPieces1(ships, &run);
+
+}
+
+while (run == 1) {
+
+BOARD(coords, movPlayed);
+
+target(coords, &x, &y, movPlayed);
+
+BullsEye(x, y, coords, ships, &hits, &movPlayed);
+
+if (hits == 17)
+
+run = 0;
+
+}
+
+BOARD(coords, movPlayed);
+
+PAUSE;
+
+break;
+
+case 2: //Prints the top 10 scores
+
+topTen(topScores, movPlayed);
+
+break;
+
+case 3:  
+
+EXIT();
+
+}
+
+} while (menuSelection != 3);
+
+}
+
+void assignShipInfo() {
+
+//Crusor
+
+Crusor.name = 'C';
+
+Crusor.size = 2;
+
+//Aircraft Carrier
+
+AirCarrier.name = 'A';
+
+AirCarrier.size = 5;
+
+//Battleship
+
+Battleship.name = 'B';
+
+Battleship.size = 4;
+
+//Submarine
+
+Submarine.name = 'S';
+
+Submarine.size = 3;
+
+//Destroyer
+
+Destroyer.name = 'D';
+
+Destroyer.size = 3;
+
+}
+
+//Main Menu
+
+int menu() {
+
+int menuInput = 0;
+
+CLS;
+
+printf("\t\t\t1. Start New Game.\n");
+
+printf("\t\t\t2. Top 10 Scores.\n");
+
+printf("\t\t\t3. Quit.\n");
+
+printf("\t\tInput: ");
+
+scanf(" %d", &menuInput);
+
+FLUSH;
+
+while ((menuInput < 1) || (menuInput > 3)) {
+
+printf("Invalid Entry, please try again: ");
+
+scanf(" %d", &menuInput);
+
+FLUSH;
+
+}//End while
+
+return menuInput;
+
+}
+
+void resetGame(char ships[row][col], char coords[row][col], int *movPlayed, int *hits) {
+
+int i, j;
+
+*movPlayed = 0;
+
+*hits = 0;
+
+for (i = 0; i < row; i++) {
+
+for (j = 0; j < col; j++) {
+
+ships[i][j] = 0;
+
+}
+
+}
+
+for (i = 0; i < row; i++) {
+
+for (j = 0; j < col; j++) {
+
+coords[i][j] = 0;
+
+}
+
+}
+
+}
+
+//Show the top ten scores
+
+void topTen(int score[], int newScore) {
+
+int i, cnt, temp, pass;
+
+for (i = 0; i < GAMES; i++) {
+
+if (score[i] == 0) {
+
+score[i] = newScore;
+
+i = 10;
+
+}
+
+}//End loop
+
+//Checks the newest score against all the other scores stored in the array.
+
+if (newScore < score[GAMES - 1])
+
+score[GAMES - 1] = newScore;
+
+for (pass = 1; pass <= (GAMES - 1); pass++) {
+
+for (cnt = 0; cnt < 9; cnt++) {
+
+if (score[cnt + 1] == 0) {
+
+pass = 10;
+
+break;
+
+}
+
+else if (score[cnt] > score[cnt + 1]) {
+
+temp = score[cnt];
+
+score[cnt] = score[cnt + 1];
+
+score[cnt + 1] = temp;
+
+}
+
+}//End Bubble Sort
+
+}//End Bubble Sort
+
+CLS;
+
+printf("\t\t\tTop Ten Scores\n");
+
+for (i = 0; i < (GAMES); i++) {
+
+if (score[i] == 0) {
+
+printf("\t\t\t%02d: Empty Score\n", i + 1);
+
+}
+
+else {
+
+printf("\t%02d: %d Moves\n", i + 1, score[i]);
+
+}
+
+}
+
+PAUSE;
+
+}
+
+void setPieces1(char ship[row][col], char *run) {
+
+setPieces2(ship, &Crusor);
+
+setPieces2(ship, &AirCarrier);
+
+setPieces2(ship, &Battleship);
+
+setPieces2(ship, &Submarine);
+
+setPieces2(ship, &Destroyer);
+
+*run = 1;
+
+}
+
+void setPieces2(char ship[row][col], struct ShipInfo *SHIP)
+
+{
+
+int i, tempX, tempY, direction, direction2, restartEND = 0;
+
+srand(time(NULL));
+
+direction = rand() % 2;
+
+direction2 = rand() % 2; //Randomly decides to place the ships, first on the x axis and then on the y axis
+
+switch (direction)
+
+{
+
+case 0: //Direction is set to row
+
+while (restartEND != SHIP->size)
+
+{
+
+//Placing a location for the ship
+
+tempX = rand() % 10;
+
+tempY = rand() % 10;
+
+restartEND = 0; //Restart counter.
+
+switch (direction2) {
+
+case 0:
+
+if ((tempX + (SHIP->size - 1)) <= (row - 1))
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX + i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX - i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+direction2 = 1;
+
+break;
+
+case 1: //Left
+
+if ((tempX - (SHIP->size - 1)) >= 0)
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX - i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX + i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+direction2 = 0;
+
+break;
+
+}
+
+}
+
+if (tempX > (SHIP->size - 2) || tempX < (row - (SHIP->size - 1)))
+
+{
+
+switch (direction2)
+
+{
+
+case 0:
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX + i][tempY] = SHIP->name;
+
+}
+
+break;
+
+case 1:
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX - i][tempY] = SHIP->name;
+
+}
+
+break;
+
+}
+
+}
+
+else if (tempX == 0)
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX + i][tempY] = SHIP->name;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX - i][tempY] = SHIP->name;
+
+}
+
+}
+
+break;
+
+case 1:
+
+while (restartEND != SHIP->size)
+
+{
+
+//Set a random location
+
+tempX = rand() % 10;
+
+tempY = rand() % 10;
+
+restartEND = 0;
+
+switch (direction2) {
+
+case 0:
+
+if ((tempX + (SHIP->size - 1)) <= (col - 1))
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX + i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX - i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+direction2 = 1;
+
+break;
+
+}
+
+case 1:
+
+if ((tempX - (SHIP->size - 1)) >= 0)
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX - i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+if (ship[tempX + i][tempY] != 0)
+
+restartEND--;
+
+else
+
+restartEND++;
+
+}
+
+}
+
+direction2 = 0;
+
+break;
+
+}
+
+}
+
+if (tempY > (SHIP->size - 2) || tempY < (col - (SHIP->size - 1)))
+
+{
+
+switch (direction2)
+
+{
+
+case 0:
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX][tempY + i] = SHIP->name;
+
+}
+
+break;
+
+case 1:
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX][tempY - i] = SHIP->name;
+
+}
+
+break;
+
+}
+
+}
+
+else if (tempY == 0)
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX][tempY + i] = SHIP->name;
+
+}
+
+}
+
+else
+
+{
+
+for (i = 0; i < SHIP->size; i++)
+
+{
+
+ship[tempX][tempY - i] = SHIP->name;
+
+}
+
+}
+
+break;
+
+}
+
+}
+
+//Generates the battlesip board
+
+void BOARD(char coords[row][col], int moves) {
+
+int i, j, counter = 1;
+
+CLS;
+
+printf("\n\t A B C D E F G H I J");
+
+printf("\n\t -------------------------------------------");
+
+for (j = 0; j < row; j++) {
+
+printf("\n %2i |", counter);
+
+for (i = 0; i < col; i++) {
+
+if (coords[i][j] == 0) {
+
+printf(" X");
+
+}
+
+else {
+
+switch (toupper(coords[i][j])) {
+
+case 'A':
+
+printf(GRN " %c" RESET, coords[i][j]);
+
+continue;
+
+case 'B':
+
+printf(YEL " %c" RESET, coords[i][j]);
+
+continue;
+
+case 'C':
+
+printf(MAG " %c" RESET, coords[i][j]);
+
+continue;
+
+case 'D':
+
+printf(BLU " %c" RESET, coords[i][j]);
+
+continue;
+
+case 'S':
+
+printf(CYN " %c" RESET, coords[i][j]);
+
+continue;
+
+default:
+
+printf(RED " %c" RESET, coords[i][j]);
+
+continue;
+
+}
+
+}
+
+}
+
+printf(" |");
+
+counter++;
+
+}
+
+printf("\n\t -------------------------------------------");
+
+printf("\n\t\t\tMissiles Launched: %i\n", moves);
+
+}
+
+//The user's input is read
+
+void target(char coords[row][col], int *x, int *y, int moves) {
+
+int targetCol, targetRow = row;
+
+char usrInput[5], targetColTemp, invalid = 0;
+
+printf("Fire missile at: ");
+
+do {
+
+scanf(" %4s", &usrInput, 5); //Takes an input
+
+FLUSH;
+
+if (strlen(usrInput) == 3 || strlen(usrInput) == 2) //Checks if the input is valid
+
+{
+
+targetColTemp = usrInput[0];
+
+if (strlen(usrInput) == 3)
+
+{
+
+targetCol = ((usrInput[1] - '0') * 10) + usrInput[2] - '0'; //Converts two digits into an integer
+
+}
+
+else
+
+{
+
+targetCol = usrInput[1] - '0'; //Converts one digit into an integer
+
+}
+
+}
+
+else { //Invalid input, print message to user
+
+printf("Invalid input, please try again: ");
+
+continue;
+
+}
+
+switch (toupper(targetColTemp)) { //toupper will convert an input in caps to lower case.
+
+case 'A':
+
+targetRow = 0;
+
+break;
+
+case 'B':
+
+targetRow = 1;
+
+break;
+
+case 'C':
+
+targetRow = 2;
+
+break;
+
+case 'D':
+
+targetRow = 3;
+
+break;
+
+case 'E':
+
+targetRow = 4;
+
+break;
+
+case 'F':
+
+targetRow = 5;
+
+break;
+
+case 'G':
+
+targetRow = 6;
+
+break;
+
+case 'H':
+
+targetRow = 7;
+
+break;
+
+case 'I':
+
+targetRow = 8;
+
+break;
+
+case 'J':
+
+targetRow = 9;
+
+break;
+
+default:
+
+printf("Invalid input. Please enter a column: ");
+
+targetRow = 10;
+
+invalid = 1;
+
+}
+
+if ((targetCol > col || targetCol < 1) && invalid != 1) {
+
+printf("Invalid Target. Please enter a row: ");
+
+invalid = 1;
+
+}
+
+if (coords[targetRow][targetCol - 1] != 0 && invalid != 1) {
+
+printf("That target has already been hit, try again: ");
+
+targetCol = col + 1;
+
+}
+
+invalid = 0;
+
+} while (targetCol > col || targetCol < 1);
+
+*x = targetRow;
+
+*y = targetCol - 1;
+
+}
+
+//Checks if the user has hit a ship
+
+void BullsEye(int x, int y, char coords[row][col], char ships[row][col], int *hits, int *moves) {
+
+if (ships[x][y] != 0) {
+
+(*hits)++;
+
+coords[x][y] = ships[x][y];
+
+(*moves)++;
+
+}
+
+else {
+
+coords[x][y] = 'M';
+
+(*moves)++;
+
+}
+
+}
+
+void EXIT() {
+
+CLS;
+
+PAUSE;
+
+}
