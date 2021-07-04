@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 char playerOne[120];    // To store name of player one//
-char name2 [100];
+char name2 [120];
 
 //All the functions that are being used in the game//
 
@@ -77,7 +77,7 @@ void starting()
    puts("*           |                                               |                 *");
    puts("*           |                                               |                 *");
    puts("*           |            'Press '1' to START'               |                 *");
-   puts("*           |       'Press '2' to opem the Rule Book'       |                 *");
+   puts("*           |       'Press '2' to open the Rule Book'       |                 *");
    puts("*           |                                               |                 *");
    puts("*           |_______________________________________________|                 *");
    puts("*                                                                             *");
@@ -143,20 +143,20 @@ void rulebook()     //shows the the rules and regulation for the game//
    puts("|                                                           *      Rules Book       *                                                                      |");
    puts("|                                                           *************************                                                                      |");
    puts("|        1. This is a two player game. However, you can choose either to play it as a single player or as a multiple player                                |");
-   puts("|           If the you choose to play as a single player, you will be playing against the computer itself                                                  |");
-   puts("|           But if you choose to play as a multiple player, you will be playing against another player denoted as Player 2.                                |");
+   puts("|           If the you choose to play as a single player, you will be playing against the computer itself.                                                 |");
+   puts("|           But if you choose to play as a multiple player, you will be playing against another player denoted as their desired name.                      |");
    puts("|        2. The battlefield is a 10x10 grid where you place your ships                                                                                     |");
-   puts("|           The horizontal boxes are identified with numbers 1-10 and the vertical boxes are marked with letters a � j.                                    |");
+   puts("|           The horizontal boxes are identified with latters A-J and the vertical boxes are marked with Numbers 0 to 9.                                    |");
    puts("|        3. You will be prompted to select the formation and position of your ships as you desired.                                                        |");
    puts("|        4. You can place your ships by entering its orientation, which are either horizontal or vertical                                                  |");
-   puts("|           For horizontal orientation, type 'h' in the orientation option and type 'v' for vertical.                                                      |");
+   puts("|           For horizontal and vertical oreantation follow the instruction from gameplay.                                                                  |");
    puts("|        5. There are 4 types of formations and a total of 10 ships to be placed by using  a coordinate system (x y)                                       |");
    puts("|           You need to place  4 ships over 2 boxes, 3 ships over 3 boxes, 2 ships over 4 boxes, 1 ship over 5 boxes.                                      |");
    puts("|        6. And its x y coordinates(both separated by a space) where x is the row number and y is the column number                                        |");
    puts("|        7. After placing your ships, the game begins as each player tries to guess the location of the enemy's ships and attack them                      |");
-   puts("|           To attack a specific area, enter its x y coordinate(separated by a space).                                                                     |");
-   puts("|        8. If your attack hits the enemy ship, it will be denoted by an 'H'. You also will get an extra turn. Same rules will be applied to your opponent |");
-   puts("|        9. If your attack misses, it will be denoted by a '*' and your turn ends.                                                                         |");
+   puts("|           To attack a specific area, enter its x y(example: g5/G5) coordinate(separated by a space).                                                     |");
+   puts("|        8. If your attack hits the enemy ship, it will be denoted by an 'X'. You also will get an extra turn. Same rules will be applied to your opponent |");
+   puts("|        9. If your attack misses, it will be denoted by a '~' and your turn ends.                                                                         |");
    puts("|       10. First player to guess the location of all ships wins.                                                                                          |");
    puts("|                                                                                                                                                          |");
    puts("|__________________________________________________________________________________________________________________________________________________________|");
@@ -687,7 +687,7 @@ int shootAIEasey(char attak[12][12], char rival[12][12], int turn)
 
 int shootAIHard(char attak[12][12], char rival[12][12], int turn, char prob[12][12])
 {
-    //printBoard(prob);
+    printBoard(prob);
             puts("");
             puts("");
             puts("");
@@ -875,7 +875,7 @@ int shoot(char attak[12][12], char rival[12][12], int turn)
        puts("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         attak[shoty][shotx] = 'X';
         attak[shoty][shotx] = '~';
-        turn = (turn == 1 ? 2 : 1);
+        turn = (turn == 1 ? 2 : 1);     // to handover the turn to opponent
     }
     return turn;
 }
