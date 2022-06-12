@@ -1,4 +1,4 @@
-# We-tried
+# BattleShip Game
 
 
                               ************Deadline for Task-1 is by Monday 17may 2021**************
